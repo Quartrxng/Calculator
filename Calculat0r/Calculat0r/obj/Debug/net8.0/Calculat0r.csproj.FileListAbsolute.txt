@@ -1,0 +1,14 @@
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\bin\Debug\net8.0\Calculat0r.exe
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\bin\Debug\net8.0\Calculat0r.deps.json
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\bin\Debug\net8.0\Calculat0r.runtimeconfig.json
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\bin\Debug\net8.0\Calculat0r.dll
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\bin\Debug\net8.0\Calculat0r.pdb
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.AssemblyInfoInputs.cache
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.AssemblyInfo.cs
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.csproj.CoreCompileInputs.cache
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.dll
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\refint\Calculat0r.dll
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.pdb
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\Calculat0r.genruntimeconfig.cache
+C:\Users\Dima\source\repos\Calculat0r\Calculat0r\obj\Debug\net8.0\ref\Calculat0r.dll
