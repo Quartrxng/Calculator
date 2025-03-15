@@ -3,11 +3,23 @@ using System.Text.RegularExpressions;
 
 namespace Calculator
 {
-    internal class Program
+    public class Program
     {
+        static Dictionary<string, IOperation> dict = new Dictionary<string, IOperation>()
+            {
+                {"+",new Plus()},
+                {"-",new Minus()},
+                {"*",new Multiplication()},
+                {"/",new Division()}
+            };
         static void Main(string[] args)
         {
             var input = Console.ReadLine();
+            var Calc = new Program();
+            Console.WriteLine(Calc.Calculator(input));
+        }
+        public double Calculator(string input)
+        {
             string pattern = @"(\d+|\+|\-|\*|\/)";
             var matches = Regex.Matches(input, pattern);
             List<string> list = new List<string>();
@@ -20,13 +32,6 @@ namespace Calculator
             }
             string[] operation = new string[] { "*", "/", "+", "-" };
             int removedCount = list.RemoveAll(item => string.IsNullOrWhiteSpace(item));
-            Dictionary<string, IOperation> dict = new Dictionary<string, IOperation>()
-            {
-                {"+",new Plus()},
-                {"-",new Minus()},
-                {"*",new Multiplication()},
-                {"/",new Division()}
-            };
 
             for (int i = 0; i < operation.Length; i++)
             {
@@ -46,9 +51,10 @@ namespace Calculator
                     list[index - 1] = result.ToString();
                 }
             }
-            Console.WriteLine(list[0]);
+            return double.Parse(list[0]);
         }
     }
+    
     interface IOperation
     {
         public double Algortithm(double a, double b);
