@@ -12,6 +12,7 @@ namespace Calculator
                 {"*",new Multiplication()},
                 {"/",new Division()}
             };
+        string[] operation = new string[] { "*", "/", "+", "-" };
         static void Main(string[] args)
         {
             var input = Console.ReadLine();
@@ -30,9 +31,7 @@ namespace Calculator
                     list.Add(match.Value);
                 }
             }
-            string[] operation = new string[] { "*", "/", "+", "-" };
             int removedCount = list.RemoveAll(item => string.IsNullOrWhiteSpace(item));
-
             for (int i = 0; i < operation.Length; i++)
             {
                 while (list.Contains(operation[i]))
