@@ -21,9 +21,15 @@ namespace Calculator
         }
         public double Calculator(string input)
         {
+            List<string> list = new List<string>();
+            if (input[0] == '-')
+            {
+                list.Add(input.Substring(0, 2));
+                input = input.Substring(2);
+            }
             string pattern = @"(\d+|\+|\-|\*|\/)";
             var matches = Regex.Matches(input, pattern);
-            List<string> list = new List<string>();
+
             foreach (Match match in matches)
             {
                 if (!string.IsNullOrWhiteSpace(match.Value))
