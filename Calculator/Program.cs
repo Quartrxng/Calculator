@@ -22,11 +22,6 @@ namespace Calculator
         public double Calculator(string input)
         {
             List<string> list = new List<string>();
-            if (input[0] == '-')
-            {
-                list.Add(input.Substring(0, 2));
-                input = input.Substring(2);
-            }
             string pattern = @"(\d+|\+|\-|\*|\/)";
             var matches = Regex.Matches(input, pattern);
 
@@ -37,9 +32,24 @@ namespace Calculator
                     list.Add(match.Value);
                 }
             }
+
             int removedCount = list.RemoveAll(item => string.IsNullOrWhiteSpace(item));
+
+            for(int i = 1; i < removedCount; i += 2)
+            {
+                if (!operation.Contains(list[i]))
+                {
+                    list.Insert(i, operation[2]);
+                }
+            }
+
             for (int i = 0; i < operation.Length; i++)
             {
+                if (list[0] == operation[3])
+                {
+                    list[1] = (-1 * double.Parse(list[1])).ToString();
+                    list.RemoveRange(0, 1);
+                }
                 while (list.Contains(operation[i]))
                 {
                     var index = 0;
