@@ -17,6 +17,10 @@ namespace CalculatorTest
         [DataRow("6*6-6*3/2", 27)]
         [DataRow("3/0", double.PositiveInfinity)]
         [DataRow("-3/0", double.NegativeInfinity)]
+        [DataRow("-3-1", -4)]
+        [DataRow("-3 - 1 ", -4)]
+        [DataRow("100 * 2 - 50 + 40 / -8", 145)]
+
 
         public void TestWithNumbers(string input, double output)
         {

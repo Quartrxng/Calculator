@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Calculator
@@ -35,41 +38,48 @@ namespace Calculator
 
             int removedCount = list.RemoveAll(item => string.IsNullOrWhiteSpace(item));
 
-            for(int i = 1; i < removedCount; i += 2)
+            for (int i = 0; i < list.Count; i++)
             {
-                if (!operation.Contains(list[i]))
+                if (list[i] == "-" && i == 0)
                 {
-                    list.Insert(i, operation[2]);
+                    list[i + 1] = "-" + list[i + 1];
+                    list.RemoveAt(i);
+                }
+                else if (i != 0) 
+                {
+                    if (list[i] == "-" && !operation.Contains(list[i - 1]))
+                        {
+                            list[i + 1] = (-double.Parse(list[i + 1])).ToString();
+                            list[i] = "+";
+                        }
+                    else if (list[i] == "-" && operation.Contains(list[i - 1]))
+                    {
+                        list[i + 1] = (-double.Parse(list[i + 1])).ToString();
+                        list.RemoveAt(i);
+                    }
                 }
             }
 
+            while (list.Contains(operation[0]) || list.Contains(operation[1]) || list.Contains(operation[2]))
             for (int i = 0; i < operation.Length; i++)
             {
-                if (list[0] == operation[3])
+                var index = 1;
+                while (list.Contains(operation[i]) && index<list.Count)
                 {
-                    list[1] = (-1 * double.Parse(list[1])).ToString();
-                    list.RemoveRange(0, 1);
-                }
-                while (list.Contains(operation[i]))
-                {
-                    var index = 0;
-                    for (int j = 0; j < list.Count; j++)
+                    if (operation.Contains(list[index]) && list[index] == operation[i])
                     {
-                        if (list[j] == operation[i])
-                        {
-                            index = j;
-                        }
+                        var work = new Work(dict[list[index]], double.Parse(list[index - 1]), double.Parse(list[index + 1]));
+                        var result = work.IWork();
+                        list.RemoveRange(index - 1, 3);
+                        list.Insert(index - 1, result.ToString());
                     }
-                    var work = new Work(dict[list[index]], double.Parse(list[index - 1]), double.Parse(list[index + 1]));
-                    var result = work.IWork();
-                    list.RemoveRange(index - 1, 2);
-                    list[index - 1] = result.ToString();
+                    index++;
                 }
             }
             return double.Parse(list[0]);
         }
     }
-    
+
     interface IOperation
     {
         public double Algortithm(double a, double b);
